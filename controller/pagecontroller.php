@@ -13,20 +13,34 @@ namespace OCA\ScienceMesh\Controller;
 use OCP\IRequest;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Http\DataResponse;
+use OCP\AppFramework\Http\JSONResponse;
+use OCP\ILogger;
 use OCP\AppFramework\Controller;
 use OCP\DB\QueryBuilder\IQueryBuilder;
 use OCP\IDBConnection;
+use OCP\Http\Client\IClientService;
+use OCP\AppFramework\Http;
 
 class PageController extends Controller {
-
-
+    	private $logger;
 	private $userId;
 	protected $connection;
 
-	public function __construct($AppName, IRequest $request, $UserId, IDBConnection $connection){
+	/** @var IClientService */
+	private $httpClientService;
+
+	public function __construct($AppName, 
+		IRequest $request,
+		$UserId,
+		IDBConnection $connection, 
+		IClientService $httpClientService,
+                ILogger $logger) {
+
 		parent::__construct($AppName, $request);
 		$this->userId = $UserId;
-		$this->connection = $connection;
+		$this->connection = $connection; 
+		$this->httpClientService = $httpClientService;
+		$this->logger = $logger;
 	}
 
 	/**
@@ -57,15 +71,58 @@ class PageController extends Controller {
 	 * @NoAdminRequired
 	 * @NoCSRFRequired
 	 */
-	public function getInternalMetrics() {
-		$metrics = $this->getMetrics();
+	public function getMetrics() {
+		// for localhost requests is needed to add
+		// 'allow_local_remote_servers' => true,
+		// to config.php
 		$settings = $this->loadSettings();
 		if (!$settings) {
-			return new DataResponse([]);
+			return new JSONResponse(["error" => "error loading settings"]);
 		}
 
+		$client = $this->httpClientService->newClient();
+		try {
+			$iopurl = $settings['iopurl'];
+			$response = $client->get("$iopurl/metrics", [
+				'timeout' => 10,
+				'connect_timeout' => 10,
+			]);
+
+			if ($response->getStatusCode() === Http::STATUS_OK) {
+				//$result = json_decode($response->getBody(), true);
+				//return (is_array($result)) ? $result : [];
+				echo($response->getBody());
+				return new Http\Response();
+			} else {
+				$this->logger->error("sciencemesh: error getting metrics from iop");
+				return new DataResponse(['error' => 'error getting metrics from iop'], Http::STATUS_INTERNAL_SERVER_ERROR);
+			}
+		} catch (\Exception $e) {
+			$this->logger->error($e->getMessage());
+			return new DataResponse(['error' => 'error getting metrics from iop'], Http::STATUS_INTERNAL_SERVER_ERROR);
+		}
+	}
+
+	/**
+	 * @PublicPage
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 */
+	public function getInternalMetrics() {
+		//$metrics = $this->getInternal();
+		$settings = $this->loadSettings();
+		if (!$settings) {
+			return new JSONResponse([]);
+		}
+
+		$metrics = [
+			"numusers" => $settings['numusers'],
+			"numfiles" => $settings['numfiles'],
+			"numstorage" => $settings['numstorage']
+		];
+
 		$payload = ["metrics" => $metrics, "settings" => $settings];
-		return new DataResponse($payload);
+		return new JSONResponse($payload);
 	}
 
 	private function loadSettings(){
@@ -74,10 +131,15 @@ class PageController extends Controller {
 		$result = $query->execute();
 		$row = $result->fetch();
 		$result->closeCursor();
+		$row['numusers'] = intval($row['numusers']);
+		$row['numfiles'] = intval($row['numfiles']);
+		$row['numstorage'] = intval($row['numstorage']);
 		return $row;
 	}
 
-	private function getMetrics() {
+	/* to get them from system rathen than manual input */
+	/*
+	private function getInternal() {
 		$queryBuilder = $this->connection->getQueryBuilder();
 		$queryBuilder->select($queryBuilder->createFunction('count(*)'))
 			->from('users');
@@ -85,34 +147,10 @@ class PageController extends Controller {
 		$count = $result->fetchColumn();
 		$hostname = \OCP\Util::getServerHostName();
 		$params = [
-			'total_users' => $count,
+			'total_users' => intval($count),
 		];
 		return $params;
 	}
-
-
-/*
-    {
-        "Name": "OC-Test@WWU",
-        "FullName": "ownCloud Test at University of Muenster",
-        "Homepage": "http://oc-test.uni-muenster.de",            
-        "Description": "ownCloud Test Instance of University of Muenster",
-        "CountryCode": "DE",
-        "Services": [
-            {
-                "Type": {
-                    "Name": "REVAD"
-                },
-                "Name": "oc-test.uni-muenster.de - REVAD",
-                "URL": "https://oc-test.uni-muenster.de/revad",
-                "IsMonitored": true,
-                "Properties": {
-                    "METRICS_PATH": "/revad/metrics"
-                },
-                "Host": "octest-test.uni-muenster.de"
-            }
-        ]
-    }
-*/
+	 */
 
 }

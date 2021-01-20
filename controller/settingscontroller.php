@@ -65,8 +65,16 @@ class SettingsController extends Controller {
 		// settings has not been set
 		$hostname = \OCP\Util::getServerHostName();
 		$data = ["hostname" => $hostname];
-
+		$data["iopurl"] = "";
+		$data["country"] = "";
+		$data["sitename"] = "";
+		$data["siteurl"] = "";
+		$data["numusers"] = 0;
+		$data["numfiles"] = 0;
+		$data["numstorage"] = 0;
 	}
+
+
         return new TemplateResponse($this->appName, "settings", $data, "blank");
     }
 
@@ -74,10 +82,10 @@ class SettingsController extends Controller {
 	 * Simply method that posts back the payload of the request
 	 * @NoAdminRequired
 	 */
-	public function saveSettings($iopurl, $country, $hostname, $sitename) {
+	public function saveSettings($iopurl, $country, $hostname, $sitename, $siteurl, $numusers, $numfiles, $numstorage) {
 		// store settings in DB
 		$this->deleteSettings();
-		$ok = $this->storeSettings($iopurl, $country, $hostname, $sitename);
+		$ok = $this->storeSettings($iopurl, $country, $hostname, $sitename, $siteurl, $numusers, $numfiles, $numstorage);
 		if (!$ok) {
 			return new DataResponse([
 				'error' => 'error storing settings, check server logs'
@@ -88,16 +96,24 @@ class SettingsController extends Controller {
 			'iopurl' => $iopurl,
 			'country' => $country,
 			'hostname' => $hostname,
-			'sitename' => $sitename
+			'sitename' => $sitename,
+			'siteurl' => $siteurl,
+			'numusers' => $numusers,
+			'numfiles' => $numfiles,
+			'numstorage' => $numstorage
 		]);
 	}
 
-	private function storeSettings($iopurl, $country, $hostname, $sitename){
+	private function storeSettings($iopurl, $country, $hostname, $sitename, $siteurl, $numusers, $numfiles, $numstorage){
 		$query = \OC::$server->getDatabaseConnection()->getQueryBuilder();
 		$query->insert('sciencemesh')
 			->setValue('iopurl', $query->createNamedParameter($iopurl))
 			->setValue('country', $query->createNamedParameter($country))
 			->setValue('sitename', $query->createNamedParameter($sitename))
+			->setValue('siteurl', $query->createNamedParameter($siteurl))
+			->setValue('numusers', $query->createNamedParameter($numusers))
+			->setValue('numfiles', $query->createNamedParameter($numfiles))
+			->setValue('numstorage', $query->createNamedParameter($numstorage))
 			->setValue('hostname', $query->createNamedParameter($hostname));
 		$result = $query->execute();
 		if (!$result) {
