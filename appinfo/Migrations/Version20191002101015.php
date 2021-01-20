@@ -9,7 +9,7 @@ use Doctrine\DBAL\Types\Type;
 /**
  * Create initial tables for the app
  */
-class Version010000Date20210118175358 implements ISchemaMigration {
+class Version20191002101015 implements ISchemaMigration {
 
     /** @var  string */
     private $prefix;
