@@ -4,6 +4,7 @@ namespace OCA\ScienceMesh\Migrations;
 
 use OCP\Migration\ISchemaMigration;
 use Doctrine\DBAL\Schema\Schema;
+use Doctrine\DBAL\Types\Type;
 
 /**
  * Create initial tables for the app
