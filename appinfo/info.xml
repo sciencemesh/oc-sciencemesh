@@ -5,7 +5,7 @@
     <description>This apps connects the site to the Science Mesh</description>
     <licence>MIT</licence>
     <author>Hugo Gonzalez Labrador</author>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <namespace>ScienceMesh</namespace>
     <category>productivity</category>
 	  <dependencies>
