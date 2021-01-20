@@ -13,6 +13,7 @@
         <owncloud max-version="11.0" />
     </dependencies>
     <settings>
-	<admin>OCA\Sciencemesh\AdminSettings</admin>
+	  <admin>OCA\Sciencemesh\AdminSettings</admin>
+    <use-migrations>true</use-migrations>
     </settings>
     </info>

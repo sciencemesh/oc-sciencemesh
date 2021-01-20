@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace OCA\ScienceMesh\Migration;
 
+use Doctrine\DBAL\Schema\Schema;
+use OCP\Migration\ISchemaMigration;
 use Closure;
 use OCP\DB\ISchemaWrapper;
 use OCP\Migration\IOutput;
