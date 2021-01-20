@@ -13,6 +13,6 @@
 	  </dependencies>
     <settings>
 	  <admin>OCA\Sciencemesh\AdminSettings</admin>
-    <use-migrations>true</use-migrations>
     </settings>
+    <use-migrations>true</use-migrations>
     </info>
