@@ -7,19 +7,34 @@
         ScienceMesh
     </h2>
 
-    <h3><?php p($l->t("Settings")) ?></h3>
+    <h3><?php p($l->t("API Key")) ?></h3>
 
-    <div id="sciencemeshAddrSettings">
+    <div id="sciencemeshAPIKeySettings">
+        <p><?php p($l->t("API Key")) ?></p>
+        <p><input id="sciencemeshAPIKey" value="<?php p($_["apikey"]) ?>" placeholder="" type="text"><em>An API key is needed to register your site with ScienceMesh. If you do not have a key yet, you can register for a free ScienceMesh account using <a href="https://sciencemesh-test.uni-muenster.de/api/siteacc/register" target="_blank">this link</a>.</em></p>
+    </div>
+
+    <h3><?php p($l->t("Site Settings")) ?></h3>
+    <div id="sciencemeshSiteSettings">
         <p><?php p($l->t("Site Name")) ?></p>
-        <p><input id="sciencemeshSitename" value="<?php p($_["sitename"]) ?>" placeholder="CERN" type="text"></p>
+        <p><input id="sciencemeshSitename" value="<?php p($_["sitename"]) ?>" placeholder="CERN" type="text"><em>The name of your site.</em></p>
+
         <p><?php p($l->t("Site URL")) ?></p>
-        <p><input id="sciencemeshSiteurl" value="<?php p($_["siteurl"]) ?>" placeholder="http://localhost" type="text"></p>
+        <p><input id="sciencemeshSiteurl" value="<?php p($_["siteurl"]) ?>" placeholder="https://owncloud.example.com" type="text"><em>The URL at which your site can be reached.</em></p>
+
         <p><?php p($l->t("Country Code")) ?></p>
-        <p><input id="sciencemeshCountryCode" value="<?php p($_["country"]) ?>" placeholder="CH" type="text"></p>
-        <p><?php p($l->t("Hostname")) ?></p>
-        <p><input id="sciencemeshHostname" value="<?php p($_["hostname"]) ?>" placeholder="example.org/xcloud/" type="text"></p>
+        <p><input id="sciencemeshCountryCode" value="<?php p($_["country"]) ?>" placeholder="CH" type="text"><em>The 2- or 3-digit code of the site's country.</em></p>
+    </div>
+
+    <h3><?php p($l->t("IOP Settings")) ?></h3>
+    <div id="sciencemeshIOPSettings">
         <p><?php p($l->t("IOP Service Address")) ?></p>
-        <p><input id="sciencemeshIopUrl" value="<?php p($_["iopurl"]) ?>" placeholder="http://<IOP URL>/" type="text"></p>
+        <p><input id="sciencemeshIopUrl" value="<?php p($_["iopurl"]) ?>" placeholder="https://owncloud.example.com/iop" type="text"><em>The main URL of your IOP service. If the IOP is running on the same host as this ownCloud instance, you can simply use <strong>http://localhost</strong> here.</em></p>
+    </div>
+
+    <h3><?php p($l->t("Metrics")) ?></h3>
+    <div id="sciencemeshMetricsSettings">
+        <em><strong>Note: </strong>The following settings need to be provided manually for now, as they are not yet extracted automatically from ownCloud. This will change in the future, though.</em>
         <p><?php p($l->t("Number of users")) ?></p>
         <p><input id="sciencemeshNumusers" value="<?php p($_["numusers"]) ?>" placeholder="0" type="number"></p>
         <p><?php p($l->t("Number of files")) ?></p>

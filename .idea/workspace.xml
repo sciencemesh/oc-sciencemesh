@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="64ea2201-de14-4125-9a78-39d5d4bd6e82" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/appinfo/Migrations/Version20210324134421.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AUTHORS.md" beforeDir="false" afterPath="$PROJECT_DIR$/AUTHORS.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/COPYING" beforeDir="false" afterPath="$PROJECT_DIR$/COPYING" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appinfo/Migrations/Version20191002101015.php" beforeDir="false" afterPath="$PROJECT_DIR$/appinfo/Migrations/Version20191002101015.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appinfo/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/appinfo/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appinfo/application.php" beforeDir="false" afterPath="$PROJECT_DIR$/appinfo/application.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appinfo/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/appinfo/autoload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appinfo/info.xml" beforeDir="false" afterPath="$PROJECT_DIR$/appinfo/info.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appinfo/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/appinfo/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/pagecontroller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/pagecontroller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/settingscontroller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/settingscontroller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/settings.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/settings.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/app.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/app.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/settings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/adminsettings.php" beforeDir="false" afterPath="$PROJECT_DIR$/lib/adminsettings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/appconfig.php" beforeDir="false" afterPath="$PROJECT_DIR$/lib/appconfig.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpunit.integration.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.integration.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/settings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/part.content.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/part.content.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/part.navigation.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/part.navigation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/part.settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/part.settings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/settings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/bootstrap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/integration/AppTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/AppTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/controller/PageControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/controller/PageControllerTest.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1qCg0GiTTE9roanKwvHJmrQOvgz" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/appinfo/Migrations" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/appinfo/Migrations" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="64ea2201-de14-4125-9a78-39d5d4bd6e82" name="Default Changelist" comment="" />
+      <created>1616588760708</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1616588760708</updated>
+      <workItem from="1616588762286" duration="5439000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
