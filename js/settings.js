@@ -32,20 +32,17 @@
                 },
                 success: function onSuccess(response) {
                     $(".section-sciencemesh").removeClass("icon-loading");
-                    if (response && (response.iopUrl != null)) {
-                        $("#sciencemeshIopUrl").val(response.iopurl);
-                        $("#sciencemeshApiKey").val(response.apikey);
-
+                    if (response) {
                         var message =
                             response.error
-                                ? (t(OCA.ScienceMesh.AppName, "Error when trying to connect") + " (" + response.error + ")")
+                                ? (t(OCA.ScienceMesh.AppName, "Error when trying to update the settings") + " (" + response.error + ")")
                                 : t(OCA.ScienceMesh.AppName, "Settings have been successfully updated");
 
                         var versionMessage = response.version ? (" (" + t(OCA.ScienceMesh.AppName, "version") + " " + response.version + ")") : "";
 
                         OC.Notification.show(message + versionMessage, {
-                            type: response.error ? "error" : null,
-                            timeout: 3
+                            type: response.error ? "error" : "info",
+                            timeout: 10
                         });
                     }
                 }
@@ -54,7 +51,7 @@
 
         $(".section-sciencemesh input").keypress(function (e) {
             var code = e.keyCode || e.which;
-            if (code === 13) {
+            if (code === 10 || code === 13) {
                 $("#sciencemeshSave").click();
             }
         });

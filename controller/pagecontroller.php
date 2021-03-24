@@ -141,6 +141,7 @@ class PageController extends Controller
 		$row['numusers'] = intval($row['numusers']);
 		$row['numfiles'] = intval($row['numfiles']);
 		$row['numstorage'] = intval($row['numstorage']);
+		unset($row['apikey']); // Remove the private API key from the exposed settings
 		return $row;
 	}
 

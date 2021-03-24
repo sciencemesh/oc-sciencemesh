@@ -24,6 +24,9 @@ class SettingsController extends Controller
 	private $config;
 	private $urlGenerator;
 
+//	const CATALOG_URL = "https://sciencemesh-test.uni-muenster.de/api/mentix/sitereg";
+	const CATALOG_URL = "http://localhost:9600/mentix/sitereg";
+
 	/**
 	 * @param string $AppName - application name
 	 * @param IRequest $request - request object
@@ -95,16 +98,17 @@ class SettingsController extends Controller
 			]);
 		}
 
-		return new DataResponse([
-			"apikey" => $apikey,
-			"sitename" => $sitename,
-			"siteurl" => $siteurl,
-			"country" => $country,
-			"iopurl" => $iopurl,
-			'numusers' => $numusers,
-			'numfiles' => $numfiles,
-			'numstorage' => $numstorage
-		]);
+		// submit settings to Mentix (if they are valid)
+		if ($apikey !== "" && $sitename !== "" && $siteurl !== "" && $iopurl !== "") {
+			$err = $this->submitSettings($apikey, $sitename, $siteurl, $country, $iopurl, $numusers, $numfiles, $numstorage);
+			if ($err != null) {
+				return new DataResponse([
+					'error' => $err
+				]);
+			}
+		}
+
+		return new DataResponse([]);
 	}
 
 	private function storeSettings($apikey, $sitename, $siteurl, $country, $iopurl, $numusers, $numfiles, $numstorage)
@@ -146,6 +150,43 @@ class SettingsController extends Controller
 		return $row;
 	}
 
+	private function submitSettings($apikey, $sitename, $siteurl, $country, $iopurl, $numusers, $numfiles, $numstorage)
+	{
+		// fill out a data object as needed by Mentix
+		$iopPath = parse_url($iopurl, PHP_URL_PATH);
+		$data = json_encode([
+			"name" => $sitename,
+			"url" => $siteurl,
+			"countryCode" => $country,
+			"reva" => [
+				"url" => $iopurl,
+				"metricsPath" => rtrim($iopPath, "/") . "/metrics"
+			]
+		]);
+		$url = self::CATALOG_URL . "?action=register&apiKey=" . urlencode($apikey);
+
+		// use CURL to send the request to Mentix
+		$curl = curl_init($url);
+		curl_setopt($curl, CURLOPT_HEADER, false);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-type: application/json"));
+		curl_setopt($curl, CURLOPT_POST, true);
+		curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+		$response = curl_exec($curl);
+		$status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+		curl_close($curl);
+
+		if ($status != 200) {
+			try {
+				$respData = json_decode($response, true);
+				return $respData["error"];
+			} catch (\Exception $e) {
+				return $e->getMessage();
+			}
+		}
+
+		return null;
+	}
 
 	/**
 	 * Get app settings

@@ -7,13 +7,6 @@
         ScienceMesh
     </h2>
 
-    <h3><?php p($l->t("API Key")) ?></h3>
-
-    <div id="sciencemeshAPIKeySettings">
-        <p><?php p($l->t("API Key")) ?></p>
-        <p><input id="sciencemeshAPIKey" value="<?php p($_["apikey"]) ?>" placeholder="" type="text"><em>An API key is needed to register your site with ScienceMesh. If you do not have a key yet, you can register for a free ScienceMesh account using <a href="https://sciencemesh-test.uni-muenster.de/api/siteacc/register" target="_blank">this link</a>.</em></p>
-    </div>
-
     <h3><?php p($l->t("Site Settings")) ?></h3>
     <div id="sciencemeshSiteSettings">
         <p><?php p($l->t("Site Name")) ?></p>
@@ -43,7 +36,17 @@
         <p><input id="sciencemeshNumstorage" value="<?php p($_["numstorage"]) ?>" placeholder="0" type="number"></p>
     </div>
 
+    <h3><?php p($l->t("API Key")) ?></h3>
+    <div id="sciencemeshAPIKeySettings">
+        <p><?php p($l->t("API Key")) ?></p>
+        <p><input id="sciencemeshAPIKey" value="<?php p($_["apikey"]) ?>" placeholder="" type="text"><em>An API key is needed to register your site with ScienceMesh. If you do not have a key yet, you can register for a free ScienceMesh account using <a href="https://sciencemesh-test.uni-muenster.de/api/siteacc/register" target="_blank">this link</a>.</em></p>
+    </div>
+
+    <div>&nbsp;</div>
     <div>
-        <p><button id="sciencemeshSave" class="button"><?php p($l->t("Save")) ?></button></p>
+        <p>
+            <button id="sciencemeshSave" class="button"><?php p($l->t("Save")) ?></button>
+            <em><strong>Note: </strong>Clicking 'Save' will, if a valid API key has been entered above, register your site with ScienceMesh (or update your existing entry).</em>
+        </p>
     </div>
 </div>
