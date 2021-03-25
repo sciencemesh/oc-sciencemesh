@@ -24,8 +24,7 @@ class SettingsController extends Controller
 	private $config;
 	private $urlGenerator;
 
-//	const CATALOG_URL = "https://sciencemesh-test.uni-muenster.de/api/mentix/sitereg";
-	const CATALOG_URL = "http://localhost:9600/mentix/sitereg";
+	const CATALOG_URL = "https://sciencemesh-test.uni-muenster.de/api/mentix/sitereg";
 
 	/**
 	 * @param string $AppName - application name
@@ -100,7 +99,7 @@ class SettingsController extends Controller
 
 		// submit settings to Mentix (if they are valid)
 		if ($apikey !== "" && $sitename !== "" && $siteurl !== "" && $iopurl !== "") {
-			$err = $this->submitSettings($apikey, $sitename, $siteurl, $country, $iopurl, $numusers, $numfiles, $numstorage);
+			$err = $this->submitSettings($apikey, $sitename, $siteurl, $country, $iopurl);
 			if ($err != null) {
 				return new DataResponse([
 					'error' => $err
@@ -150,7 +149,7 @@ class SettingsController extends Controller
 		return $row;
 	}
 
-	private function submitSettings($apikey, $sitename, $siteurl, $country, $iopurl, $numusers, $numfiles, $numstorage)
+	private function submitSettings($apikey, $sitename, $siteurl, $country, $iopurl)
 	{
 		// fill out a data object as needed by Mentix
 		$iopPath = parse_url($iopurl, PHP_URL_PATH);
