@@ -10,19 +10,19 @@
     <h3><?php p($l->t("Site Settings")) ?></h3>
     <div id="sciencemeshSiteSettings">
         <p><?php p($l->t("Site Name")) ?></p>
-        <p><input id="sciencemeshSitename" value="<?php p($_["sitename"]) ?>" placeholder="CERN" type="text"><em>The name of your site.</em></p>
+        <p><input id="sciencemeshSitename" value="<?php p($_["sitename"]) ?>" placeholder="CERN" type="text"><em>The name of this site.</em></p>
 
         <p><?php p($l->t("Site URL")) ?></p>
         <p><input id="sciencemeshSiteurl" value="<?php p($_["siteurl"]) ?>" placeholder="https://owncloud.example.com" type="text"><em>The URL at which your site can be reached.</em></p>
 
         <p><?php p($l->t("Country Code")) ?></p>
-        <p><input id="sciencemeshCountryCode" value="<?php p($_["country"]) ?>" placeholder="CH" type="text"><em>The 2- or 3-digit code of the site's country.</em></p>
+        <p><input id="sciencemeshCountryCode" value="<?php p($_["country"]) ?>" placeholder="CH" type="text"><em>The 2- or 3-digit code of the site's country. A list of all codes can be found <a href="https://www.nationsonline.org/oneworld/country_code_list.htm" target="_blank">here</a>.</em></p>
     </div>
 
     <h3><?php p($l->t("IOP Settings")) ?></h3>
     <div id="sciencemeshIOPSettings">
         <p><?php p($l->t("IOP Service Address")) ?></p>
-        <p><input id="sciencemeshIopUrl" value="<?php p($_["iopurl"]) ?>" placeholder="https://owncloud.example.com/iop" type="text"><em>The main URL of your IOP service. If the IOP is running on the same host as this ownCloud instance, you can simply use <strong>http://localhost</strong> here.</em></p>
+        <p><input id="sciencemeshIopUrl" value="<?php p($_["iopurl"]) ?>" placeholder="https://owncloud.example.com/iop" type="text"><em>The main URL of your IOP service. If the IOP is running on the same host as this ownCloud instance, you can simply use <strong>http://localhost:&#x3C;iop-port&#x3E;</strong> here.</em></p>
     </div>
 
     <h3><?php p($l->t("Metrics")) ?></h3>
