@@ -27,6 +27,9 @@ class Version20210324134421 implements ISchemaMigration
 		$table->addColumn('siteurl', 'string', [
 			'notnull' => true,
 		]);
+		$table->addColumn('siteid', 'string', [
+			'notnull' => false,
+		]);
 		$table->addColumn('country', 'string', [
 			'notnull' => true,
 			'length' => 3,
