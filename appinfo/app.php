@@ -1,29 +1,26 @@
 <?php
-/**
- *
- * (c) Copyright Ascensio System SIA 2020
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- */
+declare(strict_types=1);
 
-namespace OCA\ScienceMesh\AppInfo;
+$app = \OC::$server->query(\OCA\ScienceMesh\AppInfo\ScienceMeshApp::class);
 
-use OCP\App;
+\OC::$server->getNavigationManager()->add(function () {
+    $urlGenerator = \OC::$server->getURLGenerator();
 
-/**
- * Administration settings
- */
-App::registerAdmin("sciencemesh", "settings");
+    return [
+        // The string under which your app will be referenced in owncloud
+        'id' => 'sciencemesh',
 
-$app = \OC::$server->query(Application::class);
+        // The sorting weight for the navigation.
+        // The higher the number, the higher will it be listed in the navigation
+        'order' => 10,
+
+        // The route that will be shown on startup
+        'href' => $urlGenerator->linkToRoute('sciencemesh.app.generate'),
+
+        // The icon that will be shown in the navigation, located in img/
+        'icon' => $urlGenerator->imagePath('sciencemesh', 'app.svg'),
+
+        // The application's title, used in the navigation & the settings page of your app
+        'name' => \OC::$server->getL10N('sciencemesh')->t('ScienceMesh'),
+    ];
+});

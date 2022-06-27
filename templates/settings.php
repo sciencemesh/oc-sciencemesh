@@ -1,6 +1,6 @@
 <?php
-    style("sciencemesh", "settings");
-    script("sciencemesh", "settings");
+style("sciencemesh", "settings");
+script("sciencemesh", "settings");
 ?>
 <div class="section section-sciencemesh">
     <h2 id="sciencemesh">
